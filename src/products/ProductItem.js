@@ -1,31 +1,32 @@
 import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import {Button, Col } from 'react-bootstrap';
 
 const ProductItem = (props) => {
   return (
-    <Row xs={1} md={2} className="g-6">
-      {Array.from({ length: 1 }).map((_, idx) => (
-        <Col key={idx}>
-          <Card>
-            <Card.Body>
-              <Card.Title>{props.title}</Card.Title>
-              <Card.Img variant="top" src={props.image} style={{
-                maxWidth: "250px",
-                maxHeight: "250px",
-                width: "100px",
-                height: "100px",
-                objectFit: "cover"  
-                }} 
-            />
-              <Card.Text>
-               {props.price}
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-    </Row>
+    
+         <Col xs={12} sm={6} md={6} lg={4}>
+      <Card className="text-center mb-2">
+        <Card.Title className="mt-2">{props.title}</Card.Title>
+        <Card.Img
+          variant="top"
+          src={props.image}
+          style={{
+            maxWidth: "250px",
+            maxHeight: "250px",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            margin: "0 auto",
+          }}
+        />
+        <Card.Body className="d-flex justify-content-between align-items-center">
+          <span>${props.price}</span>
+          <Button variant="info" className="fw-bold"style={{color:"white"}}>ADD TO CART</Button>
+        </Card.Body>
+      </Card>
+    </Col>
+
+
   )
 }
 

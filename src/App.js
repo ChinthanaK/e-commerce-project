@@ -1,4 +1,6 @@
+import CartButton2 from "./components/CartButton2";
 import Content from "./components/Content";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import ProductsList from "./products/ProductsList";
 
@@ -36,6 +38,8 @@ function App() {
       <Navbar />
       <Content />
       <ProductsList productsArr={productsArr} />
+      <CartButton2 />
+      <Footer />
     </div>
   );
 }
