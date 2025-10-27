@@ -1,8 +1,10 @@
-import CartButton2 from "./components/CartButton2";
-import Content from "./components/Content";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
-import ProductsList from "./products/ProductsList";
+import CartButton2 from "./components/pages/CartButton2";
+import Content from "./components/pages/Content";
+import Footer from "./components/pages/Footer";
+import Navbar from "./components/pages/Navbar";
+import ProductsList from "./components/products/ProductsList";
+import CartProvider from "./store/CartProvider";
+
 
 
 function App() {
@@ -34,13 +36,13 @@ function App() {
 
 
   return (
-    <div className="App">
+    <CartProvider>
       <Navbar />
       <Content />
       <ProductsList productsArr={productsArr} />
       <CartButton2 />
       <Footer />
-    </div>
+    </CartProvider>
   );
 }
 

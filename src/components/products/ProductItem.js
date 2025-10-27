@@ -1,7 +1,20 @@
 import Card from 'react-bootstrap/Card';
 import {Button, Col } from 'react-bootstrap';
+import { useContext } from 'react';
+import CartProvider from '../../store/CartProvider';
 
 const ProductItem = (props) => {
+  const cartCtx = useContext(CartProvider);
+  const addToCartHandler = (event) =>{
+    event.preventDefault();
+    cartCtx.addItems({
+      id:props.id,
+      titel:props.title,
+      price:props.price,
+      quantity:1
+
+    })
+  }
   return (
     
          <Col xs={12} sm={6} md={6} lg={4}>
@@ -21,7 +34,7 @@ const ProductItem = (props) => {
         />
         <Card.Body className="d-flex justify-content-between align-items-center">
           <span>${props.price}</span>
-          <Button variant="info" className="fw-bold"style={{color:"white"}}>ADD TO CART</Button>
+          <Button variant="info" className="fw-bold"style={{color:"white"}} onClick={addToCartHandler}>ADD TO CART</Button>
         </Card.Body>
       </Card>
     </Col>
