@@ -1,9 +1,10 @@
-import CartButton2 from "./components/pages/CartButton2";
-import Content from "./components/pages/Content";
-import Footer from "./components/pages/Footer";
-import Navbar from "./components/pages/Navbar";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import AboutPage from "./components/pages/AboutPage";
 import ProductsList from "./components/products/ProductsList";
 import CartProvider from "./store/CartProvider";
+import RootLayout from "./components/layouts/RootLayout";
+import HomePage from "./components/pages/HomePage";
+import Navbar from "./components/pages/Navbar";
 
 
 
@@ -34,15 +35,34 @@ function App() {
     }
   ]
 
+  const router = createBrowserRouter([
+    {
+      path:'/',
+      element:<RootLayout />,
+      children:[
+         {path:'/',element:<HomePage/>},
+         
+        {path:'/about', element:<AboutPage />},
+   
+      ]
+    },
+     {
+    path: "/store",
+    element: (
+      <>
+        <Navbar showCartButton={true} />
+        <Outlet />
+      </>
+    ),
+    children: [{ index: true, element: <ProductsList  productsArr={productsArr}/> }],
+  },
+   
+  ])
 
   return (
     <CartProvider>
-      <Navbar />
-      <Content />
-      <ProductsList productsArr={productsArr} />
-      <CartButton2 />
-      <Footer />
-    </CartProvider>
+   <RouterProvider router={router} />
+   </CartProvider>
   );
 }
 

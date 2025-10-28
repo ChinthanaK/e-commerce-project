@@ -1,26 +1,67 @@
-import React, { useState } from 'react'
-import Nav from 'react-bootstrap/Nav';
-import CartButton from './CartButton'
+import React from 'react';
+import { NavLink} from 'react-router-dom';
+import CartButton from './CartButton';
 
-const Navbar = () => {
-  const [show, setShow] = useState(false);
-  const showCartPageHandler = () =>{
-    setShow(true);
-  }
-  const hideCartPageHandler = () =>{
-    setShow(false);
-  }
+
+const Navbar = ({showCartButton}) => {
+  
   return (
-    <div className='d-flex justify-content-between bg-dark w-100 mb-1 px-5'>
-       <Nav className="flex-grow-1 d-flex justify-content-center">
-            <Nav.Link href="#home" className="text-white">Home</Nav.Link>
-            <Nav.Link href="#features" className="text-white">Features</Nav.Link>
-            <Nav.Link href="#pricing" className="text-white">Pricing</Nav.Link>
+    <>
+    <div className='d-flex justify-content-between  align-items-center bg-dark w-100 px-5'  style={{
+    height: "60px"}}>
+       <nav className="flex-grow-1 d-flex justify-content-center align-items-center">
+            <NavLink to="/" className="text-white mx-4 text-decoration-none ">HOME</NavLink>
+            <NavLink to="/store" className="text-white mx-4 text-decoration-none">STORE</NavLink>
+            <NavLink to="/about" className="text-white mx-4 text-decoration-none">ABOUT</NavLink>
             
-    </Nav>
-    <CartButton />
-    </div>
+        </nav>
+    {showCartButton && <CartButton />}
 
+    </div>
+    
+     <div
+    className="text-white d-flex flex-column align-items-center justify-content-start position-relative"
+    style={{
+      height: "350px", 
+      width: "100%",
+      backgroundColor: "#777777",
+      
+      
+    }}
+  >
+    <h1
+      style={{
+       
+        fontSize: "90px",
+        fontWeight: "bold",
+        marginBottom: "50px",
+      }}
+    >
+      The Generics
+    </h1>
+
+    <h4
+      className="border border-info px-3 py-2 text-white"
+      style={{
+        fontSize: "20px",
+        fontWeight: "500",
+        marginBottom: "5px",
+      }}
+    >
+      Get our Latest Album
+    </h4>
+
+    <i
+      className="bi bi-play-circle"
+      style={{
+        fontSize: "5rem",
+        color: "skyblue",
+        cursor: "pointer",
+      }}
+    ></i>
+  </div>
+
+</>
   )
 }
 

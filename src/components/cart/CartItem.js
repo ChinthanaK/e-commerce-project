@@ -1,16 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Button } from 'react-bootstrap';
-import CartContext from '../../store/CartContext';
+
 
 
 const CartItem = (props) => {
-    const { item, index, id } = props;
+    const { item, index } = props;
     const { title, price, quantity, imageUrl } = item;
 
-    const cartCtx  = useContext(CartContext);
-  //     const cartItemRemoveHandler = (id) => {
-  //   cartCtx.removeItemS(id);
-  // };
 
   return (
     <>
