@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button } from 'react-bootstrap';
+import CartContext from '../../store/CartContext';
+
+
 const CartItem = (props) => {
-    const { item, index } = props;
+    const { item, index, id } = props;
     const { title, price, quantity, imageUrl } = item;
 
+    const cartCtx  = useContext(CartContext);
+  //     const cartItemRemoveHandler = (id) => {
+  //   cartCtx.removeItemS(id);
+  // };
+
   return (
+    <>
     <tr key={index}>
        <td className='d-flex align-items-center gap-3'>
         <img src={imageUrl} alt={title}  style={{
@@ -19,10 +28,12 @@ const CartItem = (props) => {
       <td>
          <div className='d-flex align-items-center justify-content-center gap-2'>
         <div className='border rounded border-info py-1 px-3'>{quantity}</div>
-       <Button variant='danger'>Remove</Button>
+       <Button variant='danger' onClick={props.onRemove}>Remove</Button>
        </div>
       </td>
     </tr>
+  
+  </>
   )
 }
 

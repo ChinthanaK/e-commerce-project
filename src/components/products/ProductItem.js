@@ -1,19 +1,21 @@
 import Card from 'react-bootstrap/Card';
 import {Button, Col } from 'react-bootstrap';
 import { useContext } from 'react';
-import CartProvider from '../../store/CartProvider';
+import CartContext from '../../store/CartContext';
+
 
 const ProductItem = (props) => {
-  const cartCtx = useContext(CartProvider);
+  const cartCtx = useContext(CartContext);
   const addToCartHandler = (event) =>{
+    console.log("item added")
     event.preventDefault();
+  
     cartCtx.addItems({
       id:props.id,
-      titel:props.title,
+      title:props.title,
       price:props.price,
       quantity:1
-
-    })
+    });
   }
   return (
     

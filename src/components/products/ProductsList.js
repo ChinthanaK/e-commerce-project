@@ -7,14 +7,15 @@ const ProductsList = (props) => {
      <div>
         <Container className="mt-3">
       <Row className="justify-content-center" style={{ gap: '10px' }}>
-        {props.productsArr.map((item, index) => (
-          <ProductItem
+        {props.productsArr.map((item, index) => {
+         return <ProductItem
             key={index}
+            id={index}
             title={item.title}
             price={item.price}
             image={item.imageUrl}
           />
-        ))}
+        })}
       </Row>
     </Container>
      </div>
