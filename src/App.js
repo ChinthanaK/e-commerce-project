@@ -5,10 +5,14 @@ import CartProvider from "./store/CartProvider";
 import RootLayout from "./components/layouts/RootLayout";
 import HomePage from "./components/pages/HomePage";
 import Navbar from "./components/pages/Navbar";
+import Footer from "./components/pages/Footer";
+import ContactUs from "./components/pages/ContactUs";
+import { useState } from "react";
 
 
 
 function App() {
+  const [users, setUsers]  =useState([]);
   const productsArr = [
     {
     title: 'Colors',
@@ -43,6 +47,7 @@ function App() {
          {path:'/',element:<HomePage/>},
          
         {path:'/about', element:<AboutPage />},
+        {path:'/contactus', element:<ContactUs onAdd = {addUserDetailsHandler}/>}
    
       ]
     },
@@ -52,12 +57,25 @@ function App() {
       <>
         <Navbar showCartButton={true} />
         <Outlet />
+        <Footer />
       </>
     ),
     children: [{ index: true, element: <ProductsList  productsArr={productsArr}/> }],
   },
    
   ])
+
+  async function addUserDetailsHandler(userDetails){
+    const response = await fetch("https://e-commerce-project-f3d4b-default-rtdb.asia-southeast1.firebasedatabase.app/users.json",{
+      method:"POST",
+      body:JSON.stringify(userDetails),
+      headers:{
+        'Content-Type':'application/json'
+      }
+    })
+    const data = await response.json();
+    console.log(data);
+  }
 
   return (
     <CartProvider>
