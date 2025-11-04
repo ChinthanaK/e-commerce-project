@@ -11,9 +11,9 @@ const Navbar = ({showCartButton}) => {
     height: "60px"}}>
        <nav className="flex-grow-1 d-flex justify-content-center align-items-center">
             <NavLink to="/" className="text-white mx-4 text-decoration-none ">HOME</NavLink>
-            <NavLink to="/store" className="text-white mx-4 text-decoration-none">STORE</NavLink>
+            <NavLink to="/products" className="text-white mx-4 text-decoration-none">STORE</NavLink>
             <NavLink to="/about" className="text-white mx-4 text-decoration-none">ABOUT</NavLink>
-             <NavLink to="/contactus" className="text-white mx-4 text-decoration-none">Contact Us</NavLink>
+            <NavLink to="/contactus" className="text-white mx-4 text-decoration-none">Contact Us</NavLink>
             
         </nav>
     {showCartButton && <CartButton />}
